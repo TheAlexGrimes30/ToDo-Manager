@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="hello_blank_fragment">ToDo Manager</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="SignUP">Sign Up</string>
+    <string name="enter_your_pass">Enter your password</string>
+    <string name="reenter_your_pass">Reenter your password</string>
+    <string name="already_registred">Already Registred!!</string>
+    <string name="SignIn">Sign In</string>
+    <string name="not_registered">Not Registered yet?</string>
+    <string name="Add_task">Ваша задача</string>
+    <string name="time_picker">Select Time</string>
+    <string name="desc">Description</string>
+    <string name="date_picker">Select Date</string>
+    <string name="new_task_headline">New Task</string>
+    <string name="save_task">Save</string>
+    <string name="item">Item 1</string>
+    <string name="Comment">Комментарий к задаче</string>
+    <string name="date">Введите дату выполнения задачи</string>
+    <string name="time">Введите время выполнения задачи</string>
+    <string name="fimage">first image</string>
+    <string name="simage">second image</string>
+    <string name="eimage">eclipse image</string>
+    <string name="bimage">button image</string>
+</resources>

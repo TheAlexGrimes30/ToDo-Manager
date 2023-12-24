@@ -1,0 +1,132 @@
+@startuml
+class com.example.todolist.Model.ToDoModel {
+- String task
+- String dueDate
+- int id
++ int getStatus()
++ void setStatus(int)
++ String getTask()
++ void setTask(String)
++ int getId()
++ void setId(int)
++ String getComment()
++ void setComment(String)
++ String getDueDate()
++ void setDueDate(String)
++ String getDueTime()
++ void setDueTime(String)
++ boolean equals(Object)
++ int hashCode()
++ String toString()
+}
+class com.example.todolist.Phrases.MotivationGenerator {
+- MotivationStrategy strategy
++ String generateMotivation()
+}
+interface com.example.todolist.OnDialogCloseListener {
+~ void onDialogClose(DialogInterface)
+}
+class com.example.todolist.MainActivity {
+- RecyclerView recyclerView
+- ImageView TaskBtn
+- DataBaseHelper myDB
+- List<ToDoModel> dataList
+- ToDoAdapter adapter
+# void onCreate(Bundle)
++ void onDialogClose(DialogInterface)
+}
+class com.example.todolist.Phrases.HumorMotivationStrategy {
+- {static} List<String> phrases
++ String getMotivationalPhrase()
+}
+class com.example.todolist.Utils.DataBaseHelper {
+- {static} String DATABASE_NAME
+- {static} String TABLE_NAME
+- {static} String COL_1
+- {static} String COL_2
+- {static} String COL_3
+- {static} String COL_4
+- {static} String COL_5
+- {static} String COL_6
+- SQLiteDatabase db
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ void insertTask(ToDoModel)
++ void updateTask(int,String)
++ void updateComment(int,String)
++ void updateDate(int,String)
++ void updateTime(int,String)
++ void updateStatus(int,int)
++ void deleteTask(int)
++ List<ToDoModel> getAllTasks()
+}
+interface com.example.todolist.Phrases.MotivationStrategy {
+~ String getMotivationalPhrase()
+}
+class com.example.todolist.Phrases.CasualMotivationStrategy {
+- {static} List<String> phrases
++ String getMotivationalPhrase()
+}
+class com.example.todolist.Adapter.ToDoAdapter {
+- List<ToDoModel> dataList
+- MainActivity activity
+- DataBaseHelper myDB
++ TaskViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(TaskViewHolder,int)
++ boolean toBoolean(int)
++ Context getContext()
++ void setTasks(List<ToDoModel>)
++ void deleteTask(int)
++ void editItem(int)
++ int getItemCount()
+}
+class com.example.todolist.Adapter.ToDoAdapter$TaskViewHolder {
+~ CheckBox taskCheckBox
+~ TextView textDate
+}
+class com.example.todolist.AddNewTask {
++ {static} String TAG
+- TextInputEditText mEditTask
+- TextInputEditText mEditComment
+- TextView mEditDate
+- TextView mEditTime
+- ImageView mSaveButton
+- DataBaseHelper myDb
+- int YEAR
+- int MONTH
+- int DAY
+- int HOUR
+- int MINUTE
++ {static} AddNewTask newInstance()
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void onDismiss(DialogInterface)
+}
+class com.example.todolist.SplashActivity {
+# void onCreate(Bundle)
+}
+class com.example.todolist.Phrases.GPeopleMotivationStrategy {
+- {static} List<String> phrases
++ String getMotivationalPhrase()
+}
+class com.example.todolist.RecyclerViewTouchHelper {
+- ToDoAdapter adapter
++ boolean onMove(RecyclerView,RecyclerView.ViewHolder,RecyclerView.ViewHolder)
++ void onSwiped(RecyclerView.ViewHolder,int)
++ void onChildDraw(Canvas,RecyclerView,RecyclerView.ViewHolder,float,float,int,boolean)
+}
+
+
+com.example.todolist.OnDialogCloseListener <|.. com.example.todolist.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.todolist.MainActivity
+com.example.todolist.Phrases.MotivationStrategy <|.. com.example.todolist.Phrases.HumorMotivationStrategy
+android.database.sqlite.SQLiteOpenHelper <|-- com.example.todolist.Utils.DataBaseHelper
+com.example.todolist.Phrases.MotivationStrategy <|.. com.example.todolist.Phrases.CasualMotivationStrategy
+com.example.todolist.Adapter.Adapter <|-- com.example.todolist.Adapter.ToDoAdapter
+com.example.todolist.Adapter.ToDoAdapter +.. com.example.todolist.Adapter.ToDoAdapter$TaskViewHolder
+com.example.todolist.Adapter.ViewHolder <|-- com.example.todolist.Adapter.ToDoAdapter$TaskViewHolder
+com.google.android.material.bottomsheet.BottomSheetDialogFragment <|-- com.example.todolist.AddNewTask
+androidx.appcompat.app.AppCompatActivity <|-- com.example.todolist.SplashActivity
+com.example.todolist.Phrases.MotivationStrategy <|.. com.example.todolist.Phrases.GPeopleMotivationStrategy
+com.example.todolist.SimpleCallback <|-- com.example.todolist.RecyclerViewTouchHelper
+@enduml

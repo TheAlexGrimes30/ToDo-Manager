@@ -1,0 +1,31 @@
+@startuml
+interface com.example.todolist.Phrases.MotivationStrategy {
+~ String getMotivationalPhrase()
+}
+class com.example.todolist.Phrases.CasualMotivationStrategy {
+- {static} List<String> phrases
++ String getMotivationalPhrase()
+}
+interface com.example.todolist.Phrases.IMotivationGenerator {
++ String generateMotivation()
+}
+class com.example.todolist.Phrases.MotivationGenerator {
+- MotivationStrategy strategy
++ <<Create>> MotivationGenerator()
++ String generateMotivation()
+}
+class com.example.todolist.Phrases.GPeopleMotivationStrategy {
+- {static} List<String> phrases
++ String getMotivationalPhrase()
+}
+class com.example.todolist.Phrases.HumorMotivationStrategy {
+- {static} List<String> phrases
++ String getMotivationalPhrase()
+}
+
+
+com.example.todolist.Phrases.MotivationStrategy <|.. com.example.todolist.Phrases.CasualMotivationStrategy
+com.example.todolist.Phrases.IMotivationGenerator <|.. com.example.todolist.Phrases.MotivationGenerator
+com.example.todolist.Phrases.MotivationStrategy <|.. com.example.todolist.Phrases.GPeopleMotivationStrategy
+com.example.todolist.Phrases.MotivationStrategy <|.. com.example.todolist.Phrases.HumorMotivationStrategy
+@enduml
